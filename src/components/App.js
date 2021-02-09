@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Modal from './Modal';
+
 export default () => {
-  return <div>Hello, React!</div>;
+  return <Modal />;
 };
