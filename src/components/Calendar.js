@@ -11,7 +11,11 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 
 // FullCalendarで日付や時間が選択できるようになるモジュール。
 import interactionPlugin from '@fullcalendar/interaction'
-const SampleCalendar = props => {
+const SampleCalendar = ({props}) => {
+
+    const handleDateClick = (arg) => { 
+        alert(arg.dateStr)
+      }
 
   return (
     <div>
@@ -22,7 +26,7 @@ const SampleCalendar = props => {
         slotDuration="00:30:00"　// 週表示した時の時間軸の単位。
         selectable={true} // 日付選択を可能にする。interactionPluginが有効になっている場合のみ。
         businessHours={{ // ビジネス時間の設定。
-          daysOfWeek: [1, 2, 3, 4, 5], // 0:日曜 〜 7:土曜
+          daysOfWeek: [1,2,3,4,5,], // 0:日曜 〜 7:土曜
           startTime: '00:00',
           endTIme: '24:00'
         }} 
@@ -36,6 +40,11 @@ const SampleCalendar = props => {
           center: 'prev, next, today',
           end: 'dayGridMonth,timeGridWeek'
         }}
+        events={[
+            { title: 'event 1', date: '2021-02-13' },
+            { title: 'event 2', date: '2021-02-14' }
+          ]}
+          dateClick={handleDateClick}
       />
     </div>
   )
