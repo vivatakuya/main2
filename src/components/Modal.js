@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
+      margin: theme.spacing(5),
+      width: '80ch',
     },
   },
 }));
@@ -16,9 +16,9 @@ export default function BasicTextFields() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Standard" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="event" label="イベント名" />
+      <TextField id="filled-basic" label="days" variant="filled" />
+      <TextField id="outlined-basic" label="詳細" variant="outlined" />
     </form>
   );
 }
