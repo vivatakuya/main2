@@ -42,12 +42,10 @@ export default function SignIn({ setName }) {
   const [string, setString] = useState("");
   console.log({ disabled, string });
 
-  useEffect 
-    (() => {
-      const disabled = string === "";
-      setDisabled(disabled);
-    },
-    [string]);
+  useEffect(() => {
+    const disabled = string === "";
+    setDisabled(disabled);
+  }, [string]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -91,22 +89,28 @@ export default function SignIn({ setName }) {
           />
 
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             disabled={disabled}
+            onClick={() => {
+              setName(string);
+            }}
           >
             追加
           </Button>
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="secondary"
             className={classes.submit}
             disabled={disabled}
+            onClick={() => {
+              setName(string);
+            }}
           >
             キャンセル
           </Button>
