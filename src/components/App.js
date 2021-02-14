@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 
 //import Modal from "./Modal";
-
+import Signin from "./Signin";
 import Calendar from "./Calendar";
-
-
+import config from "../config.json";
 
 //import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Signin from "./Signin";
 
 export default () => {
   const [name, setName] = useState("");
-  
 
-  if(name ===''){
-  return <Signin setName={setName}/>;
-  }else{
-    return<Calendar name={name}/>;
-  } ;
+  if (config.signinEnabled && name === "") {
+    return <Signin setName={setName} />;
+  } else {
+    return <Calendar name={name} />;
+  }
 };
