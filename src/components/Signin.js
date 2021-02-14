@@ -1,17 +1,17 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { useEffect, useState } from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         44期　Webアプリ
       </Link>
@@ -22,13 +22,13 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
-  
+
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -36,19 +36,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({setName}) {
+export default function SignIn({ setName }) {
   const classes = useStyles();
+  const [disabled, setDisabled] = useState(true);
+  const [string, setString] = useState("");
+  console.log({ disabled, string });
+
+  useEffect 
+    (() => {
+      const disabled = string === "";
+      setDisabled(disabled);
+    },
+    [string]);
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-       
         <Typography component="h1" variant="h5">
           イメージ画像
         </Typography>
         <form className={classes.form} noValidate>
-        <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -57,6 +66,7 @@ export default function SignIn({setName}) {
             label="イベント名"
             type="text"
             id="name"
+            onChange={(e) => setString(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -66,8 +76,9 @@ export default function SignIn({setName}) {
             name="date"
             type="date"
             id="date"
+            onChange={(e) => setString(e.target.value)}
           />
-           <TextField
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -76,14 +87,16 @@ export default function SignIn({setName}) {
             label="詳細"
             type="text"
             id="text"
+            onChange={(e) => setString(e.target.value)}
           />
-          
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={disabled}
           >
             追加
           </Button>
@@ -93,10 +106,10 @@ export default function SignIn({setName}) {
             variant="contained"
             color="secondary"
             className={classes.submit}
+            disabled={disabled}
           >
             キャンセル
           </Button>
-          
         </form>
       </div>
       <Box mt={8}>
