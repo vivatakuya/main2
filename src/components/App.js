@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import Modal from './Modal';
+import Modal from "./Modal";
 
-import Calendar from './Calendar';
+import Calendar from "./Calendar";
 
-import Signin from './Signin';
+import Siginin from "./Signin";
 
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
-import Siginin from './Signin';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default () => {
+  const [name,setName]=useState('');
+  console.log({name});
+
+
   return (
     <Router>
-    <Switch>
-    <Route exact path='/Signin' component={Siginin} />
-        <Route exact path='/Modal' component={Modal} />
-        <Route exact path='/Calendar' component={Calendar} />
-    </Switch>
-</Router>
-  )
+      <Switch>
+        <Route exact path="/Signin"
+         component={Siginin} 
+         setName ={setName}/>
+        <Route exact path="/Modal" component={Modal} />
+        <Route exact path="/Calendar" component={Calendar} />
+      </Switch>
+    </Router>
+  );
 };
