@@ -67,6 +67,13 @@ export default function SignIn({ setName }) {
             type="text"
             id="name"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e)=>{
+              console.log({key:e.key})
+              if (e.key === 'Enter'){
+                setName(e.target.value);
+              e.preventDefault();
+              }
+            }}
           />
           <TextField
             variant="outlined"
@@ -77,6 +84,13 @@ export default function SignIn({ setName }) {
             type="date"
             id="date"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e)=>{
+              console.log({key:e.key})
+              if (e.key === 'Enter'){
+                setName(e.target.value);
+              e.preventDefault();
+              }
+            }}
           />
           <TextField
             variant="outlined"
@@ -88,6 +102,13 @@ export default function SignIn({ setName }) {
             type="text"
             id="text"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e)=>{
+              console.log({key:e.key})
+              if (e.key === 'Enter'){
+                setName(e.target.value);
+              e.preventDefault();
+              }
+            }}
           />
 
           <Button
@@ -98,9 +119,9 @@ export default function SignIn({ setName }) {
             className={classes.submit}
             disabled={disabled}
             onClick={()=>{
-              setName(string);
+              setName(string)
             }}
-          >
+              >
             追加
           </Button>
           <Button
