@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //import Modal from "./Modal";
 
-//import Calendar from "./Calendar";
+import Calendar from "./Calendar";
 
 
 
@@ -11,16 +11,11 @@ import Signin from "./Signin";
 
 export default () => {
   const [name, setName] = useState("");
-  console.log({ name });
+  
 
-  return (
-    <Signin setName={setName}/>
-    // <Router>
-    //   <Switch>
-        
-    //     <Route exact path="/Modal" component={Modal} />
-    //     <Route exact path="/Calendar" component={Calendar} />
-    //   </Switch>
-    // </Router>
-  );
+  if(name ===''){
+  return <Signin setName={setName}/>;
+  }else{
+    return<Calendar name={name}/>;
+  } ;
 };

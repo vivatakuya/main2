@@ -12,7 +12,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 // FullCalendarで日付や時間が選択できるようになるモジュール。
 import interactionPlugin from "@fullcalendar/interaction";
 
-const SampleCalendar = () => {
+const Calendar = () => {
   const handleSelect = (selectinfo) => {
     const start = new Date(selectinfo.start)
     const end = new Date(selectinfo.end)
@@ -56,4 +56,4 @@ const SampleCalendar = () => {
   );
       } 
 
-export default SampleCalendar;
+export default Calendar;

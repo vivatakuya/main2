@@ -40,14 +40,12 @@ export default function SignIn({ setName }) {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState("");
-  console.log({ disabled, string });
+  const [isComposed, setIsComposed] = useState(false);
 
-  useEffect 
-    (() => {
-      const disabled = string === "";
-      setDisabled(disabled);
-    },
-    [string]);
+  useEffect(() => {
+    const disabled = string === "";
+    setDisabled(disabled);
+  }, [string]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -67,6 +65,16 @@ export default function SignIn({ setName }) {
             type="text"
             id="name"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (isComposed) return;
+
+              if (e.key === "Enter") {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
+            onCompositionStart={() => setIsComposed(true)}
+            onCompositionEnd={() => setIsComposed(false)}
           />
           <TextField
             variant="outlined"
@@ -77,6 +85,14 @@ export default function SignIn({ setName }) {
             type="date"
             id="date"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (isComposed) return;
+
+              if (e.key === "Enter") {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
           />
           <TextField
             variant="outlined"
@@ -88,6 +104,16 @@ export default function SignIn({ setName }) {
             type="text"
             id="text"
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (isComposed) return;
+
+              if (e.key === "Enter") {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
+            onCompositionStart={() => setIsComposed(true)}
+            onCompositionEnd={() => setIsComposed(false)}
           />
 
           <Button
@@ -97,7 +123,7 @@ export default function SignIn({ setName }) {
             color="primary"
             className={classes.submit}
             disabled={disabled}
-            onClick={()=>{
+            onClick={() => {
               setName(string);
             }}
           >
@@ -110,7 +136,7 @@ export default function SignIn({ setName }) {
             color="secondary"
             className={classes.submit}
             disabled={disabled}
-            onClick={()=>{
+            onClick={() => {
               setName(string);
             }}
           >
