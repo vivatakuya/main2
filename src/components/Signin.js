@@ -42,10 +42,12 @@ export default function SignIn({ setName }) {
   const [string, setString] = useState("");
   console.log({ disabled, string });
 
-  useEffect(() => {
-    const disabled = string === "";
-    setDisabled(disabled);
-  }, [string]);
+  useEffect 
+    (() => {
+      const disabled = string === "";
+      setDisabled(disabled);
+    },
+    [string]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -95,7 +97,7 @@ export default function SignIn({ setName }) {
             color="primary"
             className={classes.submit}
             disabled={disabled}
-            onClick={() => {
+            onClick={()=>{
               setName(string);
             }}
           >
@@ -108,7 +110,7 @@ export default function SignIn({ setName }) {
             color="secondary"
             className={classes.submit}
             disabled={disabled}
-            onClick={() => {
+            onClick={()=>{
               setName(string);
             }}
           >
