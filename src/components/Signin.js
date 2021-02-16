@@ -7,10 +7,12 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Grid from '@material-ui/core/Grid';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
+
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         44期　Webアプリ
@@ -28,11 +30,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
   form: {
-    width: "100%", // Fix IE 11 issue.
+    
+    width: "80vh", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    textAlign:"center",
+    
+
   },
+  
   submit: {
+    
+    width: "30vh",
+    
     margin: theme.spacing(3, 0, 2),
+  
   },
 }));
 
@@ -48,7 +59,8 @@ export default function SignIn({ setName }) {
   }, [string]);
 
   return (
-    <Container component="main" maxWidth="xs">
+    
+    <Container component="main" maxWidth="xs" >
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -115,6 +127,8 @@ export default function SignIn({ setName }) {
             onCompositionStart={() => setIsComposed(true)}
             onCompositionEnd={() => setIsComposed(false)}
           />
+          <Grid container spacing={3}>
+          <Grid item xs={6}>
 
           <Button
             type="button"
@@ -129,6 +143,8 @@ export default function SignIn({ setName }) {
           >
             追加
           </Button>
+          </Grid>
+          <Grid item xs={6}>
           <Button
             type="button"
             fullWidth
@@ -142,11 +158,14 @@ export default function SignIn({ setName }) {
           >
             キャンセル
           </Button>
+          </Grid>
+          </Grid>
         </form>
       </div>
       <Box mt={8}>
         <Copyright />
       </Box>
     </Container>
+    
   );
 }

@@ -12,17 +12,26 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 // FullCalendarで日付や時間が選択できるようになるモジュール。
 import interactionPlugin from "@fullcalendar/interaction";
 
+
+
+
+
 const Calendar = () => {
   const handleSelect = (selectinfo) => {
     const start = new Date(selectinfo.start)
     const end = new Date(selectinfo.end)
     start.setHours(start.getHours())
     end.setHours(end.getHours())
-  }
+  
+  
+  
+}
 
 
   return (
     <div>
+    
+    
       <FullCalendar
         locale="ja" // 日本語設定。
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]} // 週表示、月表示、日付等のクリックを可能にするプラグインを設定。
