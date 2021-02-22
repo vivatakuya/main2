@@ -10,28 +10,19 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
 // FullCalendarで日付や時間が選択できるようになるモジュール。
-import interactionPlugin from "@fullcalendar/interaction";
-
-
-
-
+import interactionPlugin from "@fullcalendar/interaction"; 
 
 const Calendar = () => {
   const handleSelect = (selectinfo) => {
-    const start = new Date(selectinfo.start)
-    const end = new Date(selectinfo.end)
-    start.setHours(start.getHours())
-    end.setHours(end.getHours())
-  
-  
-  
-}
-
+    const start = new Date(selectinfo.start);
+    const end = new Date(selectinfo.end);
+    start.setHours(start.getHours());
+    end.setHours(end.getHours());
+    alert ("clickしてSigninに移動");
+  };
 
   return (
     <div>
-    
-    
       <FullCalendar
         locale="ja" // 日本語設定。
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]} // 週表示、月表示、日付等のクリックを可能にするプラグインを設定。
@@ -58,11 +49,13 @@ const Calendar = () => {
           end: "dayGridMonth,timeGridWeek",
         }}
         select={handleSelect}
-        
-        
+        events={[
+          { title: '勉強', date: '2021-02-21' },
+          { title: '運動', date: '2021-02-22' },
+        ]}
       />
     </div>
   );
-      } 
+};
 
 export default Calendar;
